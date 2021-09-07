@@ -17,11 +17,11 @@ public class test {
 
 		try {
 			HashMap <String, String>HM=new HashMap<String, String>();
-			HM.put("me", "000|Ni|Yongrui|Na|Na|10000|a|me|Hello.class");
-			HM.put("employee", "001|E1|Yongrui|Na|Na|5|e|notme|Hi.Boss");
-			HM.put("user1", "002|U1|Yon|Na|Na|100|u|itsme|Hello.class");
-			HM.put("user2", "003|U2|gru|Na|Na|200|u|itsme|Hello.class");
-			HM.put("Nuser", "002|NU|rui|Na|Na|300|n|itsme|Hello.class");
+			HM.put("me", "000|Ni|Yongrui|Na|Na|10000|a|me");
+			HM.put("employee", "001|E1|Yongrui|Na|Na|5|e");
+			HM.put("user1", "002|U1|Yon|Na|Na|100|u|itsme");
+			HM.put("user2", "003|U2|gru|Na|Na|200|u|itsme");
+			HM.put("Nuser", "002|NU|rui|Na|Na|300|n|itsme");
 			FileOutputStream outStream = new FileOutputStream("src/files/data.txt");
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(outStream);
 			objectOutputStream.writeObject(HM);
@@ -41,17 +41,21 @@ public class test {
 		System.out.println("balance :"+HMtest.get("me").balance);
 		System.out.println("fN      :"+HMtest.get("me").fN);
 		System.out.println("Pw      :"+HMtest.get("me").Pw);
-		System.out.println("activity:"+HMtest.get("me").activity);
+		//System.out.println("activity:"+HMtest.get("me").activity);
 		//*********************test save****************************
 		saVe(HMtest);
-		HMtest=diseri();
 		System.out.println("acctype :"+HMtest.get("me").acctype);
 		System.out.println("balance :"+HMtest.get("me").balance);
 		System.out.println("fN      :"+HMtest.get("me").fN);
 		System.out.println("Pw      :"+HMtest.get("me").Pw);
-		System.out.println("activity:"+HMtest.get("me").activity);
+		//System.out.println("activity:"+HMtest.get("me").activity);
 
 	}
+
+	
+	/*
+	 
+	 */
 	static HashMap<String,user> diseri()
 	{
 		HashMap <String, String> HMin=new HashMap<String, String>();
@@ -75,7 +79,7 @@ public class test {
 			user user=new user();
 			String[] s=entry.getValue().split("\\|");			
 			user.acctype=s[6].charAt(0);
-			user.activity=Arrays.asList(s[8].split("\\."));
+		//user.activity=Arrays.asList(s[8].split("\\."));
 			user.balance=Double.valueOf(s[5].toString());
 			user.f2N=s[4];
 			user.l2N=s[3];
@@ -92,15 +96,15 @@ public class test {
 	static void saVe(HashMap <String, user> HMout)
 	{
 		HashMap <String, String>HM=new HashMap<String, String>();
-		StringBuffer sb = new StringBuffer();
+		//String delim = ".";
 		for (Entry<String, user> entry : HMout.entrySet()) {
-			for(String  S:entry.getValue().activity) {
-				sb.append(S+".");
-			}
-			String inS=entry.getValue().Pw+"|"+entry.getValue().lN+"|"+entry.getValue().fN+"|"+entry.getValue().l2N+"|"+entry.getValue().l2N+
-					"|"+String.valueOf(entry.getValue().balance)+"|"+entry.getValue().acctype+"|"+entry.getValue().userName+"|"+sb.toString();
+
+			String inS=entry.getValue().Pw+"|"+entry.getValue().lN+"|"+entry.getValue().fN+"|"+entry.getValue().l2N+"|"+entry.getValue().f2N+"|"+
+					String.valueOf(entry.getValue().balance)+entry.getValue().acctype+"|"+entry.getValue().userName;
 			HM.put(entry.getKey(), inS);
 		}
+
+
 		try {
 			FileOutputStream outStream = new FileOutputStream("src/files/data.txt");
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(outStream);

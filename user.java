@@ -1,14 +1,13 @@
 package myproj;
 
-import java.util.List;
 public class user {
-	public double balance;
+	public double balance=0;
 	public String userName;
 	public String Pw;
 	public String fN;
 	public String lN;
-	public String f2N;
-	public String l2N;
-	public List<String> activity;
-	public char acctype;
+	public String f2N="NA";
+	public String l2N="NA";
+	//public List<String> activity;
+	public char acctype='n';
 }

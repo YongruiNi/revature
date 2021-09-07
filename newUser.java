@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class newUser {
+	HashMap<String, user>MyHM=new HashMap<String,user>();
 	public newUser(){
+		this.MyHM=dothing.diseri();
 		System.out.println("Please enter account type, i for individuel account, j for joint account");
 		Scanner input= new Scanner(System.in);
 		String i=input.nextLine();
@@ -47,7 +49,7 @@ public class newUser {
 		}
 	}
 	//***************push back individual new user to Hashmap*******************************************************************
-	static void nuser(String userName, String pw, String fN, String lN) {
+	public  void nuser(String userName, String pw, String fN, String lN) {
 		String un=userName;
 		HashMap<String,user> MyHM=dothing.diseri();
 		try {
@@ -65,12 +67,13 @@ public class newUser {
 		NewUser.fN=fN;
 		NewUser.lN=lN;
 		NewUser.userName=un;
+		this.MyHM.put(userName, NewUser);
 		dothing.saVe(MyHM);
 		System.out.println("sucess");
 	}
 
 	//***************push back jointed new user to Hashmap*******************************************************************	
-	static void nuser(String userName, String pw, String fN, String lN, String f2N , String l2N) {
+	 public void nuser(String userName, String pw, String fN, String lN, String f2N , String l2N) {
 		String un=userName;
 		HashMap<String,user> MyHM=dothing.diseri();
 		try {
@@ -90,6 +93,7 @@ public class newUser {
 		NewUser.userName=un;
 		NewUser.f2N=f2N;
 		NewUser.l2N=l2N;
+		this.MyHM.put(un, NewUser);
 		dothing.saVe(MyHM);
 		System.out.println("sucess");
 	}

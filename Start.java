@@ -14,7 +14,6 @@ public class Start {
 		}else {
 			System.out.println("Please enter your pass word");
 			String pw=input.nextLine();
-			System.out.println(inPut+" "+pw);
 			new dothing(inPut,pw);
 		}
 		input.close();
